@@ -43,9 +43,9 @@ const SimilarMovies: React.FC<SimilarMoviesProps> = ({ genreIds }) => {
   };
 
   return (
-    <div className="m-6 w-full ">
-      <h2 className="text-2xl font-bold text-white text-center">Similar Movies</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-10 p-20">
+    <div className="m-2">
+      <h2 className="text-2xl font-bold text-white text-left">Similar Movies</h2>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-1 gap-10 p-2">
         {movies.map((movie) => (
           <div
             key={movie.id}
