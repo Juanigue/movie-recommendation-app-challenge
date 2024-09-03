@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import tmdbApi from '../../../lib/tmdbApi';
+import tmdbApi from '../lib/apiDB';
 
 interface SelectGenreProps {
   onSelect: (genre: string) => void;

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import tmdbApi from '../../lib/tmdbApi';
+import tmdbApi from '../../src/app/lib/apiDB';
 
 interface Movie {
   id: number;

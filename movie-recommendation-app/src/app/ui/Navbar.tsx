@@ -32,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch, onSelectGenre }) => {
   };
 
   return (
-    <nav className="bg-neutral-800 p-5 flex justify-between">
+    <nav className="bg-neutral-800 p-5 flex justify-between items-center">
       <Link href="/" onClick={handleReset}>
         <Image
           src="/assets/logo2.png"
@@ -45,6 +45,17 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch, onSelectGenre }) => {
       <div className="flex items-center">
         <SelectGenre onSelect={handleGenreChange} />
         <SearchBar onSearch={handleSearchChange} />
+        <div className="ml-4 flex items-center space-x-4">
+          <Link href="/favorites" className="text-white hover:text-gray-300">
+            Favorites
+          </Link>
+          <Link href="/login" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            Login
+          </Link>
+          <Link href="/signin" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+            Sign In
+          </Link>
+        </div>
       </div>
     </nav>
   );

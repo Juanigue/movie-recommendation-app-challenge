@@ -1,6 +1,6 @@
 //Server Side Component
-import tmdbApi from "../../../../lib/tmdbApi";
-import MovieDetails from "../../components/MovieDetails";
+import tmdbApi from "../../lib/apiDB";
+import MovieDetails from "../../detailsMovies/page";
 
 interface MovieDetail {
   title: string;

@@ -1,8 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import tmdbApi from '../../lib/tmdbApi';
-import Navbar from './components/Navbar';
+import tmdbApi from './lib/apiDB';
+import Navbar from './ui/Navbar';
 import './style/globals.css';
 
 interface Movie {
@@ -15,6 +15,11 @@ const Home: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [favorites, setFavorites] = useState<number[]>(() => {
+    // Recuperar favoritos del almacenamiento local
+    const savedFavorites = localStorage.getItem('favorites');
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
   const router = useRouter();
 
   useEffect(() => {
@@ -31,6 +36,11 @@ const Home: React.FC = () => {
 
     fetchMovies();
   }, []);
+
+  useEffect(() => {
+    // Guardar favoritos en el almacenamiento local cuando cambien
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
 
   const handleSearch = async (query: string) => {
     setLoading(true);
@@ -62,6 +72,18 @@ const Home: React.FC = () => {
     router.push(`/movie/${id}`);
   };
 
+  const toggleFavorite = (id: number) => {
+    setFavorites((prevFavorites) => {
+      if (prevFavorites.includes(id)) {
+        // Eliminar de favoritos
+        return prevFavorites.filter(favorite => favorite !== id);
+      } else {
+        // Agregar a favoritos
+        return [...prevFavorites, id];
+      }
+    });
+  };
+
   if (loading) return <p className="text-center mt-4">Loading...</p>;
   if (error) return <p className="text-center mt-4 text-red-500">{error}</p>;
 
@@ -72,7 +94,7 @@ const Home: React.FC = () => {
         {movies.map((movie) => (
           <div
             key={movie.id}
-            className="cursor-pointer border border-rose-500 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105"
+            className={`cursor-pointer border border-rose-500 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 ${favorites.includes(movie.id) ? 'bg-yellow-200' : ''}`}
             onClick={() => handleClick(movie.id)}
           >
             <img
@@ -82,6 +104,15 @@ const Home: React.FC = () => {
             />
             <div className="p-4 mr-4">
               <h2 className="text-lg font-semibold truncate">{movie.title}</h2>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation(); // Evita que el clic en el botón propague el evento al div contenedor
+                  toggleFavorite(movie.id);
+                }}
+                className="bg-blue-500 text-white rounded px-4 py-2 mt-2"
+              >
+                {favorites.includes(movie.id) ? 'Remove from Favorites' : 'Add to Favorites'}
+              </button>
             </div>
           </div>
         ))}

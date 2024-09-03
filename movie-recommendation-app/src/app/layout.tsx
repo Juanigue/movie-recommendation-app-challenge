@@ -1,7 +1,7 @@
 import React from 'react';
-import { Inter } from 'next/font/google';
+import { Jost } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+const jost = Jost({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Movie Recommendation App',
@@ -11,7 +11,7 @@ export const metadata = {
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={jost.className}>
         {children}
       </body>
     </html>
