@@ -33,7 +33,7 @@ const SelectGenre: React.FC<SelectGenreProps> = ({ onSelect }) => {
       <select
         value={selectedGenre}
         onChange={handleSelect}
-        className="border border-gray-400 rounded p-3 w-100 mb-2 text-lg text-gray-900 bg-white"
+        className="rounded p-2 m-2 w-100 text-lg text-gray-900 bg-white"
       >
         <option value="">Todos los Generos</option>
         {genres.map((genre) => (

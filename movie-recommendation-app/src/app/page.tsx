@@ -2,8 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import tmdbApi from '../../lib/tmdbApi';
-import SearchBar from './components/SearchBar';
-import SelectGenre from './components/SelectGenre';
+import Navbar from './components/Navbar';
 import './style/globals.css';
 
 interface Movie {
@@ -67,10 +66,8 @@ const Home: React.FC = () => {
   if (error) return <p className="text-center mt-4 text-red-500">{error}</p>;
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center mb-6">Películas Destacadas</h1>
-      <SearchBar onSearch={handleSearch} />
-      <SelectGenre onSelect={handleSelectGenre} />
+    <div className="flex flex-col min-h-screen ml-4 mr-4">
+      <Navbar onSearch={handleSearch} onSelectGenre={handleSelectGenre} />
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {movies.map((movie) => (
           <div
