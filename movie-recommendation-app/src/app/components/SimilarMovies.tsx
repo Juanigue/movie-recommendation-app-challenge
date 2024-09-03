@@ -49,7 +49,7 @@ const SimilarMovies: React.FC<SimilarMoviesProps> = ({ genreIds }) => {
         {movies.map((movie) => (
           <div
             key={movie.id}
-            className="cursor-pointer bg-neutral-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105"
+            className="cursor-pointer bg-neutral-800 border border-rose-500 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105"
             onClick={() => handleMovieClick(movie.id)}
           >
             <img

@@ -24,22 +24,29 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch, onSelectGenre }) => {
     onSelectGenre(genre);
   };
 
+  const handleReset = () => {
+    setQuery("");
+    setSelectedGenre("");
+    onSearch("");
+    onSelectGenre("");
+  };
+
   return (
-<nav className="bg-neutral-800 p-10 flex justify-between">
-  <Link href="/" className="">
-    <Image
-      src="/assets/logo2.png"
-      alt="Movie Recommendation App Logo"
-      width={500}
-      height={500}
-      quality={100}
-    />
-  </Link>
-  <div className="flex items-center">
-    <SelectGenre onSelect={handleGenreChange} />
-    <SearchBar onSearch={handleSearchChange} />
-  </div>
-</nav>
+    <nav className="bg-neutral-800 p-10 flex justify-between">
+      <Link href="/" onClick={handleReset}>
+        <Image
+          src="/assets/logo2.png"
+          alt="Movie Recommendation App Logo"
+          width={450}
+          height={100}
+          quality={100}
+        />
+      </Link>
+      <div className="flex items-center">
+        <SelectGenre onSelect={handleGenreChange} />
+        <SearchBar onSearch={handleSearchChange} />
+      </div>
+    </nav>
   );
 };
 

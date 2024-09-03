@@ -72,7 +72,7 @@ const Home: React.FC = () => {
         {movies.map((movie) => (
           <div
             key={movie.id}
-            className="cursor-pointer border rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105"
+            className="cursor-pointer border border-rose-500 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105"
             onClick={() => handleClick(movie.id)}
           >
             <img
