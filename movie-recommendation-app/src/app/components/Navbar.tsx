@@ -32,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch, onSelectGenre }) => {
   };
 
   return (
-    <nav className="bg-neutral-800 p-10 flex justify-between">
+    <nav className="bg-neutral-800 p-5 flex justify-between">
       <Link href="/" onClick={handleReset}>
         <Image
           src="/assets/logo2.png"
