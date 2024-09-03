@@ -19,10 +19,10 @@ const MovieDetails: React.FC<{ params: { id: string } }> = async ({ params }) =>
   const movie: MovieDetail = response.data;
 
   return (
-    <div className="flex flex-col min-h-screen ml-4 mr-4">
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <div className="flex flex-col items-center justify-center p-4 flex-1 bg-gray-100">
-        <div className="max-w-4xl w-full bg-black text-lg rounded-lg shadow-md p-6">
+      <div className="flex flex-col items-center justify-center p-4 flex-1 bg-black-100">
+        <div className="max-w-4xl w-full bg-rose-500 rounded-lg shadow-md p-6">
           <div className="flex flex-row">
             <img
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

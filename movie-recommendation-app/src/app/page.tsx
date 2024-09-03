@@ -66,9 +66,9 @@ const Home: React.FC = () => {
   if (error) return <p className="text-center mt-4 text-red-500">{error}</p>;
 
   return (
-    <div className="flex flex-col min-h-screen ml-4 mr-4">
+    <div className="flex flex-col min-h-screen">
       <Navbar onSearch={handleSearch} onSelectGenre={handleSelectGenre} />
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-10 p-20">
         {movies.map((movie) => (
           <div
             key={movie.id}
@@ -80,7 +80,7 @@ const Home: React.FC = () => {
               alt={movie.title}
               className="w-full h-100 object-cover"
             />
-            <div className="p-4">
+            <div className="p-4 mr-4">
               <h2 className="text-lg font-semibold truncate">{movie.title}</h2>
             </div>
           </div>

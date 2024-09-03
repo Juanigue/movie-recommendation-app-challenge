@@ -29,13 +29,13 @@ const SelectGenre: React.FC<SelectGenreProps> = ({ onSelect }) => {
   };
 
   return (
-    <div className="mb-6">
+    <div>
       <select
         value={selectedGenre}
         onChange={handleSelect}
         className="rounded p-2 m-2 w-100 text-lg text-gray-900 bg-white"
       >
-        <option value="">Todos los Generos</option>
+        <option value="">All Genres</option>
         {genres.map((genre) => (
           <option key={genre.id} value={genre.id}>
             {genre.name}

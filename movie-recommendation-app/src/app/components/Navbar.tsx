@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import SearchBar from "./SearchBar";
 import SelectGenre from "./SelectGenre";
 
@@ -24,15 +25,21 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch, onSelectGenre }) => {
   };
 
   return (
-    <nav className="bg-gray-800 p-4 mt-4 mb-4 flex items-center justify-between">
-      <Link href="/" className="text-white text-2xl font-bold">
-        Movie Recommendation App
-      </Link>  
-      <div className="flex items-center">
-        <SelectGenre onSelect={handleGenreChange} />
-        <SearchBar onSearch={handleSearchChange} />
-      </div>
-    </nav>
+<nav className="bg-neutral-800 p-10 flex justify-between">
+  <Link href="/" className="">
+    <Image
+      src="/assets/logo2.png"
+      alt="Movie Recommendation App Logo"
+      width={500}
+      height={500}
+      quality={100}
+    />
+  </Link>
+  <div className="flex items-center">
+    <SelectGenre onSelect={handleGenreChange} />
+    <SearchBar onSearch={handleSearchChange} />
+  </div>
+</nav>
   );
 };
 

@@ -12,19 +12,19 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   };
 
   return (
-    <div className="mb-6">
+    <div>
       <input
         type="text"
-        placeholder="Buscar peliculas..."
+        placeholder="Search movies..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         className="rounded p-2 m-2 w-100 text-lg text-gray-900 bg-white"
       />
       <button
         onClick={handleSearch}
-        className="bg-blue-500 text-white rounded p-2 w-200"
+        className="bg-rose-500 text-white rounded pt-2 pb-2 pr-5 pl-5 m-2"
       >
-        Buscar
+        Search
       </button>
     </div>
   );
