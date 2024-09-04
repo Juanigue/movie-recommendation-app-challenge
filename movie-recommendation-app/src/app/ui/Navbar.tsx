@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import SearchBar from "./SearchBar";
 import SelectGenre from "./SelectGenre";
-
 interface NavbarProps {
   onSearch: (query: string) => void;
   onSelectGenre: (genre: string) => void;
