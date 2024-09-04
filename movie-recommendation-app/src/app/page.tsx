@@ -68,6 +68,7 @@ const Home: React.FC = () => {
     }
   };
 
+  // To access movie details
   const handleClick = (id: number) => {
     router.push(`/movie/${id}`);
   };
@@ -75,10 +76,10 @@ const Home: React.FC = () => {
   const toggleFavorite = (id: number) => {
     setFavorites((prevFavorites) => {
       if (prevFavorites.includes(id)) {
-        // Eliminar de favoritos
+        // Delete from favorites
         return prevFavorites.filter(favorite => favorite !== id);
       } else {
-        // Agregar a favoritos
+        // Add to favorites
         return [...prevFavorites, id];
       }
     });
@@ -109,7 +110,7 @@ const Home: React.FC = () => {
                   e.stopPropagation(); // Evita que el clic en el botón propague el evento al div contenedor
                   toggleFavorite(movie.id);
                 }}
-                className="bg-blue-500 text-white rounded px-4 py-2 mt-2"
+                className="bg-red-500 text-white rounded px-4 py-2 mt-2"
               >
                 {favorites.includes(movie.id) ? 'Remove from Favorites' : 'Add to Favorites'}
               </button>

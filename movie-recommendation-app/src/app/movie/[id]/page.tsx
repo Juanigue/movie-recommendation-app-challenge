@@ -1,8 +1,8 @@
-//Server Side Component
 import tmdbApi from "../../lib/apiDB";
 import MovieDetails from "../../detailsMovies/page";
 
 interface MovieDetail {
+  id: number;
   title: string;
   release_date: string;
   genres: { name: string; id: number }[];

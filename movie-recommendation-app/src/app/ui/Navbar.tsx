@@ -35,7 +35,7 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch, onSelectGenre }) => {
     <nav className="bg-neutral-800 p-5 flex justify-between items-center">
       <Link href="/" onClick={handleReset}>
         <Image
-          src="/assets/logo2.png"
+          src="/assets/logo3.png"
           alt="Movie Recommendation App Logo"
           width={450}
           height={100}

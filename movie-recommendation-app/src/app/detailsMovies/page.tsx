@@ -6,13 +6,13 @@ import SimilarMovies from '../similarMovies/page';
 import tmdbApi from '../lib/apiDB';
 
 interface MovieDetail {
+  id: number; // Asegúrate de que esto esté presente
   title: string;
   release_date: string;
   genres: { name: string; id: number }[];
   overview: string;
   vote_average: number;
   poster_path: string;
-  id: number; // Añadido para soportar la funcionalidad de favoritos
 }
 
 interface MovieDetailsProps {
