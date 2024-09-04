@@ -121,7 +121,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie }) => {
                 </p>
                 <button
                   onClick={() => toggleFavorite(movie.id)}
-                  className="bg-blue-500 text-white rounded px-4 py-2 mt-2"
+                  className="bg-indigo-500 text-white rounded px-4 py-2 mt-2"
                 >
                   {favorites.includes(movie.id) ? 'Remove from Favorites' : 'Add to Favorites'}
                 </button>
@@ -147,7 +147,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie }) => {
                 {searchResults.map((movie) => (
                   <div
                     key={movie.id}
-                    className={`cursor-pointer border border-rose-500 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 ${favorites.includes(movie.id) ? 'bg-yellow-200' : ''}`}
+                    className={`cursor-pointer border border-rose-500 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 ${favorites.includes(movie.id) ? 'bg-rose-400' : ''}`}
                     onClick={() => handleClick(movie.id)}
                   >
                     <img
@@ -162,7 +162,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie }) => {
                           e.stopPropagation(); // Evita que el clic en el botón propague el evento al div contenedor
                           toggleFavorite(movie.id);
                         }}
-                        className="bg-blue-500 text-white rounded px-4 py-2 mt-2"
+                        className="bg-indigo-500 text-white rounded px-4 py-2 mt-2"
                       >
                         {favorites.includes(movie.id) ? 'Remove from Favorites' : 'Add to Favorites'}
                       </button>

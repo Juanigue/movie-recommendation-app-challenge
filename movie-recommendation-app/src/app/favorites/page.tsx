@@ -61,7 +61,7 @@ const FavoriteMoviesPage: React.FC = () => {
           {favorites.map(({ id, title, poster_path }) => (
             <div
               key={id}
-              className="cursor-pointer border border-rose-500 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105"
+              className={`cursor-pointer border border-rose-500 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 ? 'bg-rose-400' : ''}`}
               onClick={() => handleClick(id)}
             >
               <img
@@ -76,7 +76,7 @@ const FavoriteMoviesPage: React.FC = () => {
                     e.stopPropagation();
                     removeFavorite(id);
                   }}
-                  className="bg-blue-500 text-white rounded px-4 py-2 mt-2"
+                  className="bg-indigo-500 text-white rounded px-4 py-2 mt-2"
                 >
                   Remove from Favorites
                 </button>

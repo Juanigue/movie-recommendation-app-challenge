@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -35,27 +35,36 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch, onSelectGenre }) => {
     <nav className="bg-neutral-800 p-5 flex justify-between items-center">
       <Link href="/" onClick={handleReset}>
         <Image
-          src="/assets/logo3.png"
+          src="/assets/logo4.png"
           alt="Movie Recommendation App Logo"
-          width={450}
+          width={300}
           height={100}
           quality={100}
         />
       </Link>
-      <div className="flex items-center">
+      <div className="flex-1 flex justify-center items-center space-x-4">
         <SelectGenre onSelect={handleGenreChange} />
         <SearchBar onSearch={handleSearchChange} />
-        <div className="ml-4 flex items-center space-x-4">
-          <Link href="/favorites" className="text-white hover:text-gray-300">
-            Favorites
-          </Link>
-          <Link href="/login" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-            Login
-          </Link>
-          <Link href="/signin" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-            Sign In
-          </Link>
-        </div>
+      </div>
+      <div className="flex items-center space-x-4">
+        <Link
+          href="/favorites"
+          className="bg-rose-500 text-white px-4 py-2 rounded hover:bg-rose-600"
+        >
+          My Favorites
+        </Link>
+        <Link
+          href="/login"
+          className="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600"
+        >
+          Login
+        </Link>
+        <Link
+          href="/signin"
+          className="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600"
+        >
+          Sign In
+        </Link>
       </div>
     </nav>
   );
