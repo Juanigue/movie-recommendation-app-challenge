@@ -76,7 +76,7 @@ const FavoriteMoviesPage: React.FC = () => {
                     e.stopPropagation();
                     removeFavorite(id);
                   }}
-                  className="bg-red-500 text-white rounded px-4 py-2 mt-2"
+                  className="bg-blue-500 text-white rounded px-4 py-2 mt-2"
                 >
                   Remove from Favorites
                 </button>

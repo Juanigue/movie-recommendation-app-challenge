@@ -110,7 +110,7 @@ const Home: React.FC = () => {
                   e.stopPropagation(); // Evita que el clic en el botón propague el evento al div contenedor
                   toggleFavorite(movie.id);
                 }}
-                className="bg-red-500 text-white rounded px-4 py-2 mt-2"
+                className="bg-blue-500 text-white rounded px-4 py-2 mt-2"
               >
                 {favorites.includes(movie.id) ? 'Remove from Favorites' : 'Add to Favorites'}
               </button>

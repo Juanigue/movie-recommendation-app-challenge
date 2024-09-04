@@ -4,9 +4,10 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../ui/Navbar';
 import SimilarMovies from '../similarMovies/page';
 import tmdbApi from '../lib/apiDB';
+import { useRouter } from 'next/navigation';
 
 interface MovieDetail {
-  id: number; // Asegúrate de que esto esté presente
+  id: number;
   title: string;
   release_date: string;
   genres: { name: string; id: number }[];
@@ -30,6 +31,8 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie }) => {
     const savedFavorites = localStorage.getItem('favorites');
     return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
+
+  const router = useRouter();
 
   useEffect(() => {
     setView('details');
@@ -86,6 +89,10 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie }) => {
     });
   };
 
+  const handleClick = (id: number) => {
+    router.push(`/movie/${id}`);
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar onSearch={handleSearch} onSelectGenre={handleSelectGenre} />
@@ -126,25 +133,40 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie }) => {
           <div>
             <button
               onClick={handleResetView}
-              className="bg-rose-500 text-white rounded pt-2 pb-2 pr-5 pl-5 m-2"
+              className="bg-rose-500 text-white rounded p-2 mb-2"
             >
               Back to Movie Details
             </button>
-            <h2 className="text-2xl font-bold mb-2 text-white">Search Results</h2>
+            <h2 className="text-2xl font-bold mb-2 text-bg">Search Results</h2>
             {loading ? (
               <p>Loading...</p>
             ) : error ? (
               <p className="text-red-500">{error}</p>
             ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-10">
                 {searchResults.map((movie) => (
-                  <div key={movie.id} className="cursor-pointer" onClick={() => handleSearch(movie.id)}>
+                  <div
+                    key={movie.id}
+                    className={`cursor-pointer border border-rose-500 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 ${favorites.includes(movie.id) ? 'bg-yellow-200' : ''}`}
+                    onClick={() => handleClick(movie.id)}
+                  >
                     <img
                       src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                       alt={movie.title}
                       className="w-full h-auto object-cover rounded-lg"
                     />
-                    <p className="text-center font-semibold text-white">{movie.title}</p>
+                    <div className="p-4 mr-4">
+                      <h2 className="text-lg font-semibold truncate">{movie.title}</h2>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation(); // Evita que el clic en el botón propague el evento al div contenedor
+                          toggleFavorite(movie.id);
+                        }}
+                        className="bg-blue-500 text-white rounded px-4 py-2 mt-2"
+                      >
+                        {favorites.includes(movie.id) ? 'Remove from Favorites' : 'Add to Favorites'}
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>

@@ -82,7 +82,7 @@ const SimilarMovies: React.FC<SimilarMoviesProps> = ({ genreIds }) => {
                   e.stopPropagation();
                   toggleFavorite(movie.id);
                 }}
-                className="bg-red-500 text-white rounded px-4 py-2 mt-2"
+                className="bg-blue-500 text-white rounded px-4 py-2 mt-2"
               >
                 {favorites.includes(movie.id) ? 'Remove from Favorites' : 'Add to Favorites'}
               </button>
